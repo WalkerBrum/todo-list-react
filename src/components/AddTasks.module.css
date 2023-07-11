@@ -1,0 +1,63 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  margin: -1.69rem 0;
+  height: 54px;
+}
+
+.tasks {
+  width: 638px;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: var(--gray-500);
+  color: var(--gray-300);
+  border: none;
+}
+
+.tasks:focus {
+  outline: 1px solid var(--purple-dark);
+}
+
+.addTasks {
+  background: var(--blue-dark);
+  color: #F2F2F2;
+  border: none;
+  border-radius: 8px;
+  width: 90px;
+  font-size: 0.875rem;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.addTasks:hover {
+  background: var(--blue);
+}
+
+@media (max-width: 738px) {
+  .wrapper {
+    margin: -1.69rem 0.5rem 0
+  }
+  .tasks {
+    width: 85%
+  }
+
+  .addTasks {
+    width: 15%;
+  }
+}
+
+@media (max-width: 470px) {
+  .tasks {
+    width: 78%
+  }
+
+  .addTasks {
+    width: 22%;
+  }
+}

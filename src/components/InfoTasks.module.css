@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  max-width: 736px;
+  margin: 4rem auto 1.5rem auto;
+}
+
+.createTasks {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.createTasks h4 {
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: var(--blue);
+}
+
+.completedTasks {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.completedTasks h4 {
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #8284FA;
+}
+
+.numberTasks {
+  display: flex;
+  align-items: center;
+
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--gray-200);
+  padding: 0.125rem 0.5rem;
+  background-color: var(--gray-400);
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    margin: 4rem 1rem 1.5rem 1rem;;
+  }
+}
+
