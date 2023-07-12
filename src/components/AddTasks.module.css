@@ -39,6 +39,18 @@
   background: var(--blue);
 }
 
+.addTasks:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.message {
+  color: #E25858;
+  font-size: 0.75rem;
+  margin: 1.75rem auto -1.75rem auto;
+  text-align: center;
+}
+
 @media (max-width: 738px) {
   .wrapper {
     margin: -1.69rem 0.5rem 0

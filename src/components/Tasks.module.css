@@ -1,10 +1,9 @@
 .wrapperTasks {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
   gap: 0.75rem;
   
-  width: 46rem;
+  max-width: 46rem;
   padding: 1rem;
   margin: 0 auto 0.75rem auto;
   background-color: var(--gray-500);
@@ -13,7 +12,8 @@
 }
 
 .container {
-  padding: 0.2rem
+  padding: 0.2rem;
+  height: 24px;
 }
 
 .container input {
@@ -23,8 +23,8 @@
 }
 
 .container .check {
-  width: 1.09rem;
-  height: 1.09rem;
+  width: 17px;
+  height: 17px;
   position: absolute;
   border: 2px solid var(--blue);
   border-radius: 50%;
@@ -60,7 +60,6 @@
 
 .wrapperTasks .task {
   font-size: 0.875rem;
-  padding-left: 1rem;
   color: #F2F2F2;
 }
 
@@ -68,7 +67,6 @@
   text-decoration: line-through;
   color: var(--gray-300);
   font-size: 0.875rem;
-  padding-left: 1rem;
 }
 
 .container input:checked ~ .check:after {
@@ -77,9 +75,12 @@
 
 .wrapperTasks .trash {
   margin: 4px;
+  background: transparent;
+  border: 0;
+  color: var(--gray-300);
   cursor: pointer;
   min-width: 16px;
-  min-height: 16px;
+  height: 16px;
 }
 
 .wrapperTasks .trash:hover {

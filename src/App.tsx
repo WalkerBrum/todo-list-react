@@ -1,29 +1,18 @@
 
-import { AddTasks } from './components/AddTasks';
+import { AppContextProvider } from './contexts/AppContext';
+
 import { Header } from './components/Header';
-import { InfoTasks } from './components/InfoTasks';
-import { WithoutTasks } from './components/WithoutTasks';
 
 import './global.css';
-import styles from './App.module.css';
-import { Tasks } from './components/Tasks';
+import { Home } from './pages/Home';
 
 export const App = () => {
-  const tasks = true;
 
   return (
-    <>
+    <AppContextProvider>
       <Header />
-
-      <main className={styles.main}>
-        <AddTasks />
-        <InfoTasks />
-
-        {tasks ? <Tasks /> : <WithoutTasks />}
-        <Tasks />
-        <Tasks />
-      </main>
-    </>
+      <Home />
+    </AppContextProvider>
   )
 }
 
