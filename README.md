@@ -42,7 +42,7 @@ Este projeto foi desenvolvido com as seguintes ferramentas:
 
 <img src="src/assets/images/without-tasks.jpg" title="Print screen da aplicação sem tarefas adicionadas"/>
 <img src="src/assets/images/with-tasks.jpg" title="Print screen da aplicação com tarefas adicionadas"/>
-<img src="src/assets/images/select-form-button.jpeg" title="Print screen da aplicação com tarefas adicionadas, input e button selecionados"/>
+<img src="src/assets/images/select-form-button.jpg" title="Print screen da aplicação com tarefas adicionadas, input e button selecionados"/>
 
 <hr>
 
