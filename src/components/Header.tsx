@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 
-import todoLogo from '../assets/todo-logo.svg';
+import todoLogo from '../assets/images/todo-logo.svg';
 
 export const Header = () => {
 
