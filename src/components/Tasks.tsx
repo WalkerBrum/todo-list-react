@@ -3,6 +3,7 @@ import { useContext, useState } from 'react';
 
 import styles from './Tasks.module.css';
 import { AppContext } from '../contexts/AppContext';
+import { deleteItemLocalStorage } from '../utils/deleteItemLocalStorage';
 
 interface ITasks {
   task: string
@@ -18,6 +19,7 @@ export const Tasks = ({ task }: ITasks) => {
     const tasksWithoutDeleteOne = context.tasks.filter(task => task !== taskToDelete)
 
     context.setTasks(tasksWithoutDeleteOne)
+    deleteItemLocalStorage(tasksWithoutDeleteOne)
 
     if (!taskIsCompleted) context.setAmountTasksCompleted(amountTasksCompleted - 1)
   }

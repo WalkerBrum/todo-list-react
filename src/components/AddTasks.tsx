@@ -3,6 +3,7 @@ import { PlusCircle } from 'phosphor-react';
 import styles from './AddTasks.module.css';
 import { ChangeEvent, FormEvent, useContext, useState } from 'react';
 import { AppContext } from '../contexts/AppContext';
+import { setItemLocalStorage } from '../utils/setItemLocalStorage';
 
 export const AddTasks = () => {
   const [newTask, setNewTask] = useState('')
@@ -18,6 +19,8 @@ export const AddTasks = () => {
     event.preventDefault()
 
     context.setTasks([...context.tasks, newTask])
+    setItemLocalStorage(context.tasks, newTask)
+    // localStorage.setItem('tasks', JSON.stringify([...context.tasks, newTask]))
 
     setNewTask('')
   }

@@ -1,4 +1,5 @@
 import { createContext, useState, ReactNode } from 'react';
+import { getLocalStorage } from '../utils/getLocalStorage';
 
 interface IAppContext {
   tasks: string[];
@@ -14,7 +15,9 @@ interface Props {
 export const AppContext = createContext({} as IAppContext)
 
 export const AppContextProvider = ({ children }: Props) => {
-  const [tasks, setTasks] = useState<string[]>([])
+  const tasksLocalStorage = getLocalStorage()
+  
+  const [tasks, setTasks] = useState<string[]>(tasksLocalStorage)
   const [amountTasksCompleted, setAmountTasksCompleted] = useState(0)
 
   return (
