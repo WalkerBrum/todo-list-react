@@ -1,48 +1,60 @@
 import { Trash } from 'phosphor-react';
 import { useContext, useState } from 'react';
 
-import styles from './Tasks.module.css';
 import { AppContext } from '../contexts/AppContext';
 import { deleteItemLocalStorage } from '../utils/deleteItemLocalStorage';
+import { updateLocalStorage } from '../utils/updateLocalStorage';
+
+import styles from './Tasks.module.css';
 
 interface ITasks {
-  task: string
+  id: number;
+  task: string;
+  check: boolean;
 }
 
-export const Tasks = ({ task }: ITasks) => {
-  const [taskIsCompleted, setTaskIsCompleted] = useState(true)
-
+export const Tasks = (props: ITasks) => {
+  const { id, task } = props
+  
   const context = useContext(AppContext)
 
-  const deleteTask = (taskToDelete: string) => {
-    const amountTasksCompleted = context.amountTasksCompleted
-    const tasksWithoutDeleteOne = context.tasks.filter(task => task !== taskToDelete)
+  const [taskIsCompleted, setTaskIsCompleted] = useState(context.tasks[id-1].check)
+
+  const deleteTask = (taskToDelete: number) => {
+    const tasksWithoutDeleteOne = context.tasks.filter(infoTasks => infoTasks.id !== taskToDelete)
 
     context.setTasks(tasksWithoutDeleteOne)
     deleteItemLocalStorage(tasksWithoutDeleteOne)
 
-    if (!taskIsCompleted) context.setAmountTasksCompleted(amountTasksCompleted - 1)
+    context.setAmountTasksCompleted(context.amountTasksCompleted - 1)
   }
 
-  const completedTasks = () => {
-    const amountTasksCompleted = context.amountTasksCompleted
-    setTaskIsCompleted(!taskIsCompleted)
+  const completedTasks = (idTaskToUpdate: number) => {
+    context.tasks.map(infoTasks => {
+      if (infoTasks.id === idTaskToUpdate) {
+        infoTasks.check = !taskIsCompleted
 
-    if (taskIsCompleted) {
-      return context.setAmountTasksCompleted(amountTasksCompleted + 1)
-    }
+        setTaskIsCompleted(infoTasks.check)
+      }
+      
+      if (!taskIsCompleted) {
+        context.setAmountTasksCompleted(context.amountTasksCompleted + 1)
+      } else {
+        context.setAmountTasksCompleted(context.amountTasksCompleted - 1)
+      }
+    })
 
-    context.setAmountTasksCompleted(amountTasksCompleted - 1)
+    updateLocalStorage(context.tasks)
   }
 
   return (
     <article className={styles.wrapperTasks}>
       <label className={styles.container}>
-        <input type="checkbox" onClick={completedTasks}/>
+        <input type="checkbox" className={taskIsCompleted ? styles.inputChecked : ''} onClick={() => completedTasks(id)}/>
         <span className={styles.check} />
       </label>
-      <p className={taskIsCompleted ? styles.task : styles.checkTask}>{task}</p>
-      <button className={styles.trash} onClick={() => deleteTask(task)}>
+      <p className={!taskIsCompleted ? styles.task : styles.checkTask}>{task}</p>
+      <button className={styles.trash} onClick={() => deleteTask(id)}>
         <Trash size={17}/>
       </button>
     </article>

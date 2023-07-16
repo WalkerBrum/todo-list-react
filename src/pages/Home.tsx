@@ -19,8 +19,13 @@ export const Home = () => {
       {
         haveTask
           ? 
-          context.tasks.map(task => (
-          <Tasks task={task} key={task} /> 
+          context.tasks.map(infoTask => (
+          <Tasks 
+            id={infoTask.id} 
+            task={infoTask.task}
+            check={infoTask.check}
+            key={infoTask.id} 
+          /> 
         ))
           : 
         <WithoutTasks />

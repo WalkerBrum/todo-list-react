@@ -1,9 +1,16 @@
 import { createContext, useState, ReactNode } from 'react';
+
 import { getLocalStorage } from '../utils/getLocalStorage';
 
+export interface ITasksProps {
+  id: number;
+  task: string;
+  check: boolean;
+}
+
 interface IAppContext {
-  tasks: string[];
-  setTasks: (task: string[]) => void;
+  tasks: ITasksProps[];
+  setTasks: (task: ITasksProps[]) => void;
   amountTasksCompleted: number;
   setAmountTasksCompleted: (amount: number) => void;
 }
@@ -17,7 +24,7 @@ export const AppContext = createContext({} as IAppContext)
 export const AppContextProvider = ({ children }: Props) => {
   const tasksLocalStorage = getLocalStorage()
   
-  const [tasks, setTasks] = useState<string[]>(tasksLocalStorage)
+  const [tasks, setTasks] = useState<ITasksProps[]>(tasksLocalStorage)
   const [amountTasksCompleted, setAmountTasksCompleted] = useState(0)
 
   return (

@@ -35,9 +35,13 @@
   border: 2px solid var(--blue-dark);
 }
 
-.container input:checked ~ .check {
+.container .inputChecked ~ .check {
   background-color: var(--purple-dark);
   border: none;
+}
+
+.container .inputChecked ~ .check:after {
+  display: block;
 }
 
 .container .check:after {
@@ -67,10 +71,6 @@
   text-decoration: line-through;
   color: var(--gray-300);
   font-size: 0.875rem;
-}
-
-.container input:checked ~ .check:after {
-  display: block;
 }
 
 .wrapperTasks .trash {
