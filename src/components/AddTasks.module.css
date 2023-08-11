@@ -12,8 +12,12 @@
   border-radius: 8px;
   padding: 1rem;
   background-color: var(--gray-500);
-  color: var(--gray-300);
+  color: #F2F2F2;
   border: none;
+}
+
+.tasks::placeholder {
+  color: var(--gray-300);
 }
 
 .tasks:focus {
