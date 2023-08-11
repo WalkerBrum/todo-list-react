@@ -19,7 +19,7 @@ export const InfoTasks = () => {
     })
 
     context.setAmountTasksCompleted(amountTaskCompleted)
-  }, [])
+  }, [context.tasks])
   
   return (
     <section className={styles.wrapper}>
